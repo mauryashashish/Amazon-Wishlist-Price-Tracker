@@ -3,14 +3,14 @@
 This is a simple Python script to track the prices of your favourite products on Amazon.in regularly after some interval of time. This code uses Object oriented programming concepts, mail automation and web scrapping.
 
 
-## Several libraries of python is used in this script:
+<h3>Several libraries of python is used in this script:</h3>
 
 <code>requests</code> : sends a request on specified URL and collects the response
 <code>bs4</code> : helps to the html text obtained as response
 <code>smptlib</code> : Simple Mail Transfer Protocol library to automate the mail sending process
 
 
-## Refrences:
+<h3>Refrences:</h3>
 
 To read about automating the mail sending process using python:
 https://realpython.com/python-send-email/
