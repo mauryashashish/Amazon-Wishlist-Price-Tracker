@@ -24,7 +24,7 @@ class Wishlist:
 		if asin_id == -1:
 			return -1
 		asin = url[asin_id:asin_id+10]
-		return [asin, url[:asin_id+10]]
+		return (asin, url[:asin_id+10])
 
 	
 	def addItem (self, url, price):
@@ -61,6 +61,7 @@ class Wishlist:
 		try:
 			res = requests.get(url)
 		except Exception as e:
+			# print(e)
 			return -1
 		# here we can also use html.parser but lxml is faster
 		# lxml does not come with python3 by default
@@ -68,12 +69,13 @@ class Wishlist:
 		soup.encode('utf-8')
 
 		try:
-			title = soup.find(id= "productTitle").getText()
+			title = soup.find(id= "productTitle").getText().strip()
 			price = float(soup.find(id = "priceblock_ourprice").getText().replace(',', '').replace('₹', '').replace(' ', '').strip())
-		except:
+		except Exception as e:
+			# print(e)
 			return -1
 
-		return {title, price}
+		return (title, price)
 
 	
 	def sendMail (self, url, title, price):
@@ -138,12 +140,16 @@ class Wishlist:
 
 			try:
 				title, cur_price = self.getDetails(url)
-			except Exception:
+			except Exception as e:
+				# print(e)
 				print("Product details are currently unavailble")
 				continue
 
 			if cur_price <= price:
 				self.sendMail(url, title, cur_price)
+				print("Mail sent for {title} at current price of INR {cur_price}".format(title = title, cur_price = cur_price))
+			else:
+				print("The current price of {title} is still at INR {cur_price}".format(title = title, cur_price = cur_price))
 
 
 
@@ -155,7 +161,7 @@ bag = Wishlist()
 # add Items to the wishlist
 bag.addItem("https://www.amazon.in/dp/B092J39VJC/ref=s9_acsd_al_bw_c2_x_2_t?pf_rd_m=A1K21FY43GMZF8&pf_rd_s=merchandised-search-4&pf_rd_r=K844RZ0X3PEDVJCEAMTF&pf_rd_t=101&pf_rd_p=48c4b04e-a3bc-45ee-b57e-03d8942c7c53&pf_rd_i=20656599031", 20000)
 bag.addItem("https://www.amazon.in/dp/B08VB57558/ref=s9_acsd_al_bw_c2_x_0_t?pf_rd_m=A1K21FY43GMZF8&pf_rd_s=merchandised-search-6&pf_rd_r=K844RZ0X3PEDVJCEAMTF&pf_rd_t=101&pf_rd_p=21419d67-a09e-499d-aa17-67fb517eb3f6&pf_rd_i=20656599031", 50000)
-bag.addItem("https://www.amazon.in/ASUS-i7-10700-Graphics-Keyboard-G15CK-IN030T/dp/B08SX424XD/?_encoding=UTF8&pd_rd_w=FYWEz&pf_rd_p=730090a5-d1cb-4d65-a97c-9881819a53f1&pf_rd_r=KMCTW8PQACPKYG9ZCRR8&pd_rd_r=ce5b2971-59e6-4267-822a-2e1bfee35f9b&pd_rd_wg=AyeQl&ref_=pd_gw_ci_mcx_mr_hp_atf_m", 140000)
+bag.addItem("https://www.amazon.in/ASUS-i7-10700-Graphics-Keyboard-G15CK-IN030T/dp/B08SX424XD/?_encoding=UTF8&pd_rd_w=FYWEz&pf_rd_p=730090a5-d1cb-4d65-a97c-9881819a53f1&pf_rd_r=KMCTW8PQACPKYG9ZCRR8&pd_rd_r=ce5b2971-59e6-4267-822a-2e1bfee35f9b&pd_rd_wg=AyeQl&ref_=pd_gw_ci_mcx_mr_hp_atf_m", 160000)
 bag.addItem("https://www.amazon.in/dp/B091FH823X/ref=s9_acsd_al_bw_c2_x_3_t?pf_rd_m=A1K21FY43GMZF8&pf_rd_s=merchandised-search-6&pf_rd_r=ZM4SCB50CCC033JAA36K&pf_rd_t=101&pf_rd_p=b5ba1f27-71f8-4f22-b4e4-75bffae66a9a&pf_rd_i=26297682031", 75000)
 
 
