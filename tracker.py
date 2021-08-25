@@ -166,9 +166,9 @@ bag.addItem("https://www.amazon.in/ASUS-i7-10700-Graphics-Keyboard-G15CK-IN030T/
 bag.addItem("https://www.amazon.in/dp/B091FH823X/ref=s9_acsd_al_bw_c2_x_3_t?pf_rd_m=A1K21FY43GMZF8&pf_rd_s=merchandised-search-6&pf_rd_r=ZM4SCB50CCC033JAA36K&pf_rd_t=101&pf_rd_p=b5ba1f27-71f8-4f22-b4e4-75bffae66a9a&pf_rd_i=26297682031", 75000)
 
 
-# this loop runs the checkPrice function once every 15 minutes
+# this loop runs the checkPrice function once every 30 seconds
 while True:
 	print(time.ctime())
 	bag.checkPrice()
-	time.sleep(60*15)
+	time.sleep(30)
 
