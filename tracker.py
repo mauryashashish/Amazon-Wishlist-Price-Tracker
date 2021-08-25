@@ -101,7 +101,7 @@ class Wishlist:
 		{title} is now available at INR {price}.
 
 		Check it out on: {link}
-		""",format(title = title, price = price, link = url)
+		""".format(title = title, price = price, link = url)
 
 		# HTML version of message
 		html = """\
