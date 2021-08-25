@@ -5,9 +5,9 @@ This is a simple Python script to track the prices of your favourite products on
 
 ## Several libraries of python is used in this script:
 
-<code> requests </code>: sends a request on specified URL and collects the response
-bs4 : helps to the html text obtained as response
-smptlib: Simple Mail Transfer Protocol library to automate the mail sending process
+<code>requests</code> : sends a request on specified URL and collects the response
+<code>bs4</code> : helps to the html text obtained as response
+<code>smptlib</code> : Simple Mail Transfer Protocol library to automate the mail sending process
 
 
 ## Refrences:
