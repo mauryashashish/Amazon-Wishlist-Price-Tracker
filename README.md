@@ -3,7 +3,7 @@
 This is a simple and useful python script to track the prices of your favourite products on amazon.in regularly after some interval of time. This code uses object oriented programming concepts, mail automation and data scraping.
 
 
-<h3>Several libraries of python is used in this script:</h3>
+<h3>Several libraries are used in this python script:</h3>
 
 <code>requests</code> : sends a request on specified URL and collects back the response<br>
 <code>bs4</code> : helps to parse the html text obtained as response<br>
