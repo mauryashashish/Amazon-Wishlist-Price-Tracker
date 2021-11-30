@@ -7,7 +7,7 @@ This is a simple and useful python script to track the prices of your favourite 
 
 <code>requests</code> : sends a request on specified URL and collects back the response<br>
 <code>bs4</code> : helps to parse the html text obtained as response<br>
-<code>smptlib</code> : automates the mail sending process<br>
+<code>smtplib</code> : automates the mail sending process<br>
 
 
 <h3>Refrences:</h3>
